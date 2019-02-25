@@ -5,22 +5,114 @@
 		<title>Namco - Rocky Hill Reviews</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/main.css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-		<!-- google review scripts -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<script src="assets/js/google_reviews.js "></script>
-		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyC7xkxQFP-to-X53zGunkc5EB5pzIX55Sw"></script>
+		<!-- bar graph -->
 		<script>
-    jQuery(document).ready(function() {
-        $("#google-reviews").googlePlaces({
-            placeId: 'ChIJ9QKjcJlN5okR4uoXcFu6-Jk',
-            render: ['reviews'],
-            min_rating: 0,
-            max_rows: 0
-        							});
-    								});
+			window.onload = function () {
+
+var chart = new CanvasJS.Chart("chartContainer1",
+    {
+animationEnabled: true,
+        title: {
+            text: "Store Recommendations",
+        },
+        data: [
+        {
+            type: "pie",
+            showInLegend: true,
+            dataPoints: [
+                { y: 1, legendText: "Poor Customer Service", indexLabel: "No Help" },
+                { y: 2, legendText: "No comment provided", indexLabel: "Blank" },
+                { y: 0, legendText: "Hard to find products and/or messy store", indexLabel: "Messy" },
+                { y: 0, legendText: "The staff was very cold and didn't know anything", indexLabel: "Unprofessional" },
+            ]
+        },
+        ]
+    });
+chart.render();
+
+var chart = new CanvasJS.Chart("chartContainer2",
+    {
+        animationEnabled: true,
+        title: {
+            text: "Store Strengths",
+        },
+        data: [
+        {
+            type: "pie",
+            showInLegend: true,
+            dataPoints: [
+                { y: 1, legendText: "Helpful Customer Service", indexLabel: "Help" },
+                { y: 3, legendText: "No comment provided", indexLabel: "Blank" },
+                { y: 5, legendText: "Had products available and well-presented", indexLabel: "Availability" },
+                { y: 3, legendText: "The staff was very friendly and knowledgable", indexLabel: "Professional" },
+            ]
+        },
+        ]
+    });
+chart.render();
+
+var chart = new CanvasJS.Chart("chartContainer3",
+    {
+        animationEnabled: true,
+        title: {
+            text: "Last 7 Google Reviews"
+        },
+        axisX: {
+            valueFormatString: "MMM",
+            interval: 1,
+            intervalType: "month"
+        },
+        axisY: {
+            includeZero: false
+        },
+        data: [
+        {
+          type: "line",
+          dataPoints: [
+              { x: new Date(2018, 04, 08), y: 5 },
+              { x: new Date(2018, 04, 27), y: 1},
+              { x: new Date(2018, 05, 03), y: 3 },
+              { x: new Date(2018, 05, 11), y: 4 },
+              { x: new Date(2018, 08, 21), y: 2 },
+              { x: new Date(2018, 09, 05), y: 4 },
+              { x: new Date(2019, 00, 10), y: 5}
+            ]
+        }
+        ]
+    });
+chart.render();
+
+var chart = new CanvasJS.Chart("chartContainer4",
+    {
+        animationEnabled: true,
+        title: {
+            text: "Total Number of Google Reviews Since April 2018"
+        },
+        axisX: {
+            interval: 10,
+        },
+
+
+        data: [
+        {
+            type: "column",
+            color: "rgba(85,208,211,.3)",
+            dataPoints: [
+                { x: 10, y: 2, label: "1 Star" },
+                { x: 20, y: 2, label: "2 Star" },
+                { x: 30, y: 2, label: "3 Star" },
+                { x: 40, y: 4, label: "4 Star" },
+                { x: 50, y: 10, label: "5 Star" },
+            ]
+        },
+        ]
+    });
+chart.render();
+
+	}
 		</script>
 		
 	</head>
@@ -33,138 +125,110 @@
 					<header id="header" class="alt">
 						<span class="logo"><img src="images/Namco_Logo_CMYK.png" alt="" /></span>
 						<h1>Rocky Hill</h1>
-						<p>Review Stats for the Rocky Hill store </p>
+						<p>Google Review Stats for Namco in Rocky Hill</p>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star"></span>
+							<p> Recently, the Rocky Hill store has been doing well. As seen above, it's currently at a 4-star average, and seems to be picking up the pace in 2019. It's strongest areas are customer service and store management, albiet some mishaps here and there. Nonetheless, if Rocky Hill continues on its current projections, it'll be a 5-star store before long.</p>
 					</header>
 
 				<!-- Nav -->
 					<nav id="nav">
 						<ul>
-							<li><a href="#intro" class="active">Overview</a></li>
+							<li><a href="#total" class="active">Total Scores</a></li>
+							<li><a href="#trend">Score Trend</a></li>
 							<li><a href="#strengths">Strengths</a></li>
 							<li><a href="#recommendations">Recommendations</a></li>
-							<li><a href="#profiles">Customer Profiles</a></li>
-							<li><a href="#trends"> Trends</a></li>
+							<li><a href="#raw"> Raw Data</a></li>
 						</ul>
 					</nav>
 
 				<!-- Main -->
 					<div id="main">
 
-						<!-- Introduction -->
+						<!-- Overview -->
 						
-							<section id="intro" class="main">
+							<section id="total" class="main">
 								<div class="spotlight">
-									<div class="content">
+									<div align="center" class="content">
 										<header class="major">
-											<h2>Overview of the stats</h2>
+											<h2>Overview</h2>
+
 										</header>
-										<div id="google-reviews"></div>
-										<ul class="actions">
-											<div id="google-reviews"></div>
-											<li><a href="generic.html" class="button">Link</a></li>
-										</ul>
+											<p> While majority of the reviews are great, there is a lack of reviews in general, with less than 20 in almost a year. However, the store is light on traffic, thus the shortage. Quantity aside, the store is doing well with what it does have, with majority of the reviews positive.</p>
+										<div id="chartContainer4" style="width: 45%; height: 300px;display: inline-block;"></div><br>
+
 									</div>
-									<span class="image"><img src="images/pic01.png" alt="" /></span>
+
 								</div>
 							</section>
 						
-						<!-- Google Reviews -->
 	
-						
-						<!-- First Section -->
-						
-							<section id="strengths" class="main special">
-								<header class="major">
-									<h2>Strengths</h2>
-								</header>
-								<ul class="features">
-									<li>
-										<span class="icon major style1 fa-code"></span>
-										<h3>First Good thing</h3>
-										<p>Stats</p>
-									</li>
-									<li>
-										<span class="icon major style3 fa-copy"></span>
-										<h3>Second Good thing</h3>
-										<p>Stats</p>
-									</li>
-									<li>
-										<span class="icon major style5 fa-diamond"></span>
-										<h3>Third Good Thing</h3>
-										<p>Stats</p>
-									</li>
-								</ul>
-								<footer class="major">
-									<ul class="actions special">
-										<li><a href="generic.html" class="button">Link</a></li>
-									</ul>
-								</footer>
-							</section>
-
-						<!-- Second Section -->
-						
-							<section id="recommendations" class="main special">
-								<header class="major">
-									<h2>What to work on</h2>
-									<p>This section will have what customers didn't like and how we can improve it. It'll feature data about negative reviews, keywords, and patterns. </p>
-								</header>
-								<ul class="statistics">
-									<li class="style1">
-										<span class="icon fa-code-fork"></span>
-										<strong>5,120</strong> Data
-									</li>
-									<li class="style2">
-										<span class="icon fa-folder-open-o"></span>
-										<strong>8,192</strong> Data
-									</li>
-									<li class="style3">
-										<span class="icon fa-signal"></span>
-										<strong>2,048</strong> Data
-									</li>
-									<li class="style4">
-										<span class="icon fa-laptop"></span>
-										<strong>4,096</strong> Data
-									</li>
-									<li class="style5">
-										<span class="icon fa-diamond"></span>
-										<strong>1,024</strong> Data
-									</li>
-								</ul>
-								<p class="content">We can use this section to specify exactly what we need to do, like a procedure.</p>
-								<footer class="major">
-									<ul class="actions special">
-										<li><a href="generic.html" class="button">Learn More</a></li>
-									</ul>
-								</footer>
-							</section>
-
-						<!-- Get Started -->
-						
-							<section id="profiles" class="main special">
-								<header class="major">
-									<h2>Customer Profiles</h2>
-									<p>Have customer profiles here that we haven't responded to - good and bad.</p>
-								</header>
-								<footer class="major">
-									<ul class="actions special">
-										<li><a href="generic.html" class="button primary">Get Started</a></li>
-										<li><a href="generic.html" class="button">Learn More</a></li>
-									</ul>
-								</footer>
-							</section>
 						
 						<!-- Trends -->
 						
-							<section id="trends" class="main special">
+							<section id="trend" class="main special">
 								<header class="major">
-									<h2>General Trends</h2>
-									<p>General trends of good and bad traits and what they mean for the store</p>
+									<h2>Trends</h2>
+								</header>
+								<p> While it's fair to say there's been a roller coaster season, the store seems like it's currently on the upswing, with rising ratings since October. At the same time, it should take care to keep up this standard to avoid any pitfalls as seen in the past.</p>
+								<ul class="features">
+									<div id="chartContainer3" style="width: 45%; height: 300px;display: inline-block;"></div><br>
+									</ul>
+							</section>
+
+						<!-- Strengths -->
+							<div align="center">
+							<section align="center" id="strengths" class="main special">
+								<header class="major">
+									<h2>Strengths</h2>
+								</header>
+
+								<p>The store's greatest strengths lies in its presentation, with happy customers citing ease of shopping as their highlight. On top of this, the Namco team has done a great job making customers feel comfortable. If we keep up the standard, it'll mean greater success for the store </p>
+								<div align="left" id="chartContainer2" style="width: 45%; height: 300px;display: inline-block;"></div>
+	
+								<footer class="major">
+
+								</footer>
+							</section>
+							</div>
+						<!-- Recommendations -->
+						
+							<section id="recommendations" class="main special">
+								<header class="major">
+									<h2>Recommendations</h2>
+									<p>The biggest area of improvement is paying attention to each customer. While the task is hard, it's important to create a system that helps all customers, to an extent, while keeping the store running efficiently. Most customers don't even care to leave a comment, instead just a poor review. It's important to be engaged with each customer and make sure they're being treated respectfully and with care.</p>
 								</header>
 								<footer class="major">
-									<ul class="actions special">
-										<li><a href="generic.html" class="button primary">Get Started</a></li>
-										<li><a href="generic.html" class="button">Learn More</a></li>
-									</ul>
+								<div id="chartContainer1" style="width: 45%; height: 300px;display: inline-block;"></div><br> 
+
+								</footer>
+							</section>
+						
+						<!-- Raw Reviews -->
+						
+							<section id="raw" class="main special">
+								<header class="major">
+									<h2>Raw Review Data</h2>
+									<p>You can see all the reviews for the store by pressing the button.</p>
+									<div class="container">
+										<div class="col-md-6">
+											<p><input type="text" id="placeid" class="form-control" placeholder="Place ID" value="ChIJ9QKjcJlN5okR4uoXcFu6-Jk"/></p>
+											<p><button class="go btn btn-block btn-primary">Get Reviews</button></p>
+											<div class="results"></div>
+										</div>
+		
+										<div class="col-md-6">
+										<p>Click the button to get all the Google reviews from April 2018 onwards.</p>
+
+										</div>
+									</div>
+
+								</header>
+								<footer class="major">
+
 								</footer>
 							</section>
 
@@ -172,26 +236,8 @@
 
 				<!-- Footer -->
 					<footer id="footer">
-						<section>
-							<h2>Info</h2>
-							<p>Maybe some company info</p>
-							<ul class="actions">
-								<li><a href="generic.html" class="button">Purpose of this site</a></li>
-							</ul>
-						</section>
-						<section>
-							<h2>Contact</h2>
-							<dl class="alt">
-								<dt>Address</dt>
-								<dd>1234 Somewhere Road &bull; Nashville, TN 00000 &bull; USA</dd>
-								<dt>Phone</dt>
-								<dd>(000) 000-0000 x 0000</dd>
-								<dt>Email</dt>
-								<dd><a href="#">information@untitled.tld</a></dd>
-							</dl>
 
-						</section>
-						<p class="copyright">&copy; Namco Pools LLC. Design: Ahmed Ali</p>
+						<p align="center" class="copyright">&copy; Namco Pools LLC.</p>
 					</footer>
 
 			</div>
@@ -199,11 +245,19 @@
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 			<script src="assets/js/jquery.scrolly.min.js"></script>
 			<script src="assets/js/browser.min.js"></script>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+				integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+				crossorigin="anonymous"></script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+				integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+				crossorigin="anonymous"></script>
+			<script src="assets/js/reviews.js"></script>
 
 	</body>
 </html>
